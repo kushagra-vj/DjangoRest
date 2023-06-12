@@ -21,4 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # path('movie/', include('watchlist.urls')),
     path('watch/', include('watchlist.api.urls'), name='watchlist'),
+    path('account/', include('user_app.api.urls'), name='account'),
+    # path('api-auth/', include('rest_framework.urls')),
 ]
