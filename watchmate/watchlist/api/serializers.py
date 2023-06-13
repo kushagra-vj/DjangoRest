@@ -3,9 +3,10 @@ from watchlist.models import WatchList, StreamingPlatform, Review
 
 # model serialization
 class ReviewSerializer(serializers.ModelSerializer):
+    review_user = serializers.StringRelatedField(read_only=True)
     class Meta:
         model = Review
-        fields = '__all__'
+        exclude = ['watchlist']
 
 
 class WatchListSerializer(serializers.ModelSerializer):
@@ -33,8 +34,8 @@ class WatchListSerializer(serializers.ModelSerializer):
             return name
 
 
-# class StreamingPlatformSerializer(serializers.ModelSerializer):
-class StreamingPlatformSerializer(serializers.HyperlinkedModelSerializer):
+class StreamingPlatformSerializer(serializers.ModelSerializer):
+# class StreamingPlatformSerializer(serializers.HyperlinkedModelSerializer):
     watchlist = WatchListSerializer(many=True, read_only=True) # return all mathces of streaming
     # watchlist = serializers.StringRelatedField(many=True) # return names of movie in streaming
     # watchlist = serializers.PrimaryKeyRelatedField(many=True, read_only=True) # return primary key of movie
