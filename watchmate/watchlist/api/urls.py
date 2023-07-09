@@ -1,7 +1,8 @@
 from django.urls import path
 # from watchlist.api.views import movie_list, movie_detail
 from watchlist.api.views import WatchListView, WatchDetailView, StreamingListView, StreamingDetailView, \
-    ReviewListView, ReviewDetailsView, ReviewCreateView
+    ReviewListView, ReviewDetailsView, ReviewCreateView, UserReview, WatchListSearch, \
+    WatchListOrder
 
 urlpatterns = [
     # path('list/', movie_list, name='movie-list'),
@@ -19,5 +20,13 @@ urlpatterns = [
     path('<int:pk>/review_create/', ReviewCreateView.as_view(), name='review-create'), #create reviews for perticular movie
     path('<int:pk>/reviews/', ReviewListView.as_view(), name='review-list'), #All reviews for perticular id
     path('review/<int:pk>/', ReviewDetailsView.as_view(), name='review-detail'), # specific review
+
+    path('reviews/', UserReview.as_view(), name='user-review-detail'),
+
+    # Searching
+    path('search_watch/', WatchListSearch.as_view(), name='search-watch'), 
+
+    # Ordering
+    path('ordering_watch/', WatchListOrder.as_view(), name='order-watch'), 
 
 ]

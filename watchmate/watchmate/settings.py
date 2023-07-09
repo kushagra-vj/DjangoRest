@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'watchlist',
+    'django_filters',
     'rest_framework',
     'rest_framework.authtoken',
 ]
@@ -135,6 +136,14 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
 
     ),
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+
+    # project level pagination
+    # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    # 'PAGE_SIZE': 8,
+
+    # disabling browsable apis
+    'DEFAULT_RENDERER_CLASSES': ['rest_framework.renderers.JSONRenderer',],
 }
 
 
