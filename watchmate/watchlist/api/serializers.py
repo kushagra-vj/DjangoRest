@@ -10,8 +10,11 @@ class ReviewSerializer(serializers.ModelSerializer):
 
 
 class WatchListSerializer(serializers.ModelSerializer):
-    review = ReviewSerializer(many=True, read_only=True)
+    # review = ReviewSerializer(many=True, read_only=True)
     # title_length = serializers.SerializerMethodField()
+
+    #to override id to its actual name from model use below code
+    platform = serializers.CharField(source='platform.name')
 
     class Meta:
         model = WatchList
